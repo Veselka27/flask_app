@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Of The Day</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <h1 class="quote">"{{quote}}"</h1>
+    <h3>{{author}}</h3>
+    <button class="button" onclick="window.location.href='/'"><strong>Back</strong></button>
+</body>
+</html>

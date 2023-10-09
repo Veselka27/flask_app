@@ -1,0 +1,29 @@
+body {
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -ms-user-select: none;
+    text-align: center;
+    background-color: #252422;
+    overflow: hidden;
+}
+button {
+    color: #fffcf2;
+    background-color: #252422;
+    border: solid 2px #eb5e28;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h1 {
+    color: #fffcf2;
+}
+
+h2 {
+    color: #fffcf2;
+}
+
+h3 {
+    color: #fffcf2
+}

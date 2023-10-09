@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
+    <title>Button counter</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const counter = document.getElementById("count-tag")
+            function add() {
+                fetch("/button-counter", {method: "POST"})
+                .then(response => response.text())
+                .then(data => {
+                    counter.textContent=`You have clicked the button ${data} times`;
+                })
+            }
+
+            document.getElementById("add-button").addEventListener("click", () => {
+                add()
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>Button counter</h1>
+    <h3 id="count-tag">You have clicked the button {{count}} times</h3>
+    <button id="add-button"><strong>Add</strong></button>
+    <button onclick="window.location.href='/'"><strong>Back</strong></button>
+</body>
+</html>

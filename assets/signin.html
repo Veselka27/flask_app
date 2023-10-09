@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <style>
+        input::-webkit-inner-spin-button {
+            display: none;
+        }
+        input:focus {
+            outline: none;
+        }
+        .text {
+            border: 2px solid #eb5e28;
+            border-radius: 5px;
+            padding: 3px;
+            background-color: #252422;
+        }
+        input::placeholder {
+            color: #fffcf2;
+            opacity: 0.5;
+        }
+        input {
+            color: #fffcf2;
+        }
+        p {
+            color: #fffcf2;
+        }
+        a {
+            color: #fffcf2;
+        }
+        .submit {
+            color: #fffcf2;
+            background-color: #252422;
+            border: solid 2px #eb5e28;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Sign In</h1>
+    <form action="#" method="post">
+        <input type="text" name="username" placeholder="username" class="text"><br><br>
+        <input type="password" name="passwd" placeholder="password" class="text"><br><br>
+        <input type="submit" value="submit" class="submit">
+    </form>
+    <p>{{message}}</p>
+    <p>Already have an account? <a href="{{url_for('login')}}">Log In</a></p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip calculator</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        input::-webkit-inner-spin-button {
+            display: none;
+        }
+        input:focus {
+            outline: none;
+        }
+        input::placeholder {
+            opacity: 0.5;
+            color: #fffcf2
+        }
+        input {
+            border: 2px solid #eb5e28;
+            border-radius: 5px;
+            padding: 3px;
+            background-color: #252422;
+            color: #fffcf2;
+        }
+    </style>
+    <script defer>
+        function getTip() {
+            const result = document.getElementById("result")
+            var intPrice = document.getElementById("price").valueAsNumber;
+            var intTip = document.getElementById("tip").valueAsNumber;
+            let resulttxt = Math.round(((intPrice / 100) * intTip) + intPrice)
+            if (isNaN(resulttxt)) {
+                result.innerText = "Final price:";
+            } else {
+                result.innerText = `Final price: ${resulttxt}`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Tip calculator</h1>
+    <h3>Price:</h3>
+    <input type="number" inputmode="numeric" name="" id="price" oninput="getTip()" placeholder="Kč">
+    <h3>Tip:</h3>
+    <input type="number" inputmode="numeric" name="" id="tip" oninput="getTip()" placeholder="%">
+    <h3 id="result">Final price:</h3>
+    <button class="button" onclick="window.location.href='/'"><strong>Back</strong></button>
+</body>
+</html>

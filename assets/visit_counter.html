@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
+    <title>Visit counter</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <h1>Visit counter</h1>
+    <h3 id="count">You have visited this site {{count}} times</h3>
+    <button onclick="window.location.href='/'"><strong>Back</strong></button>
+</body>
+</html>

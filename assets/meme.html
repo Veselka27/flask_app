@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
+    <title>My Flask App</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <style>
+        img {
+            max-width: 200%;
+            height: auto;
+        }
+        body {
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{meme_title}}</h1>
+	<img src="{{meme}}"></img><br>
+    <button class="button" onclick="window.location.href='/'"><strong>Back</strong></button>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
+    <title>My Flask App</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <h1>Welcome to my webpage {{user}}!</h1>
+    <h2>Here i have some counters</h2>
+    <button onclick="window.location.href='/button-counter'"><strong>Button counter</strong></button>
+    <button onclick="window.location.href='/visit-counter'"><strong>Visit counter</strong></button>
+    <h2>And here i have a quote of the day</h2>
+    <button onclick="window.location.href='/quote-of-the-day'"><strong>Quote</strong></button>
+	<h2>Meme page</h2>
+	<button onclick="window.location.href='/meme'"><strong>Go</strong></button>
+    <h2>Here is a tip calculator</h2>
+    <button onclick="window.location.href='/tip-calculator'"><strong>Tip calculator</strong></button>
+    <h2>Testing Page</h2>
+    <button onclick="window.location.href='/testing'"><strong>Test</strong></button>
+    <h2>Logout</h2>
+    <button onclick="window.location.href='/logout'"><strong>Logout</strong></button>
+</body>
+</html>
+
+    

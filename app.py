@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
-import requests, datetime, json, bcrypt
+import requests, bcrypt
 
 app = Flask(__name__, template_folder="assets")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
@@ -25,7 +25,6 @@ class User(db.Model):
 
 quote_url: str = "https://favqs.com/api/qotd"
 meme_url: str  = "https://meme-api.com/gimme"
-path: str = "/home/pi/flask_app/data.json"
 
 def get_quote(url: str):
     response = requests.get(url)
@@ -114,6 +113,22 @@ def visit_counter():
     else:
         return redirect(url_for("main"))
 
+@app.route("/reset-<count>", methods=["POST"])
+def reset(count):
+    if "user" in session:
+        user = User.query.filter_by(username=session["user"]).first()
+        if count == "buttoncount":
+            user.buttoncount = 0 # type: ignore
+            db.session.commit()
+            return "OK"
+        else:
+            user.visitcount = 0 # type: ignore
+            db.session.commit()
+            return redirect(url_for("visit_counter"))
+    else:
+        return redirect(url_for("main"))
+            
+
 @app.route("/quote-of-the-day")
 def quote_of_the_day():
     if "user" in session:
@@ -139,6 +154,15 @@ def tip_calculator():
         return render_template("tip-calculator.html")
     else:
         return redirect(url_for("main"))
+
+@app.route("/leader-board")
+def leader_board():
+    if "user" in session:
+        users = User.query.order_by(User.buttoncount.desc()).all()# type: ignore
+        return render_template("leader_board.html", users=users)
+    else:
+        return redirect(url_for("main"))
+        
 
 @app.route("/testing", methods=["POST", "GET"])
 def testing():

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leader board</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <style>
+        ul {
+            color: #fffcf2;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        {% for user in users%}
+            <li>{{user.username}} has clicked the button {{user.buttoncount}} times</li>
+        {% endfor %}
+    </ul>
+    <button onclick="window.location.href='/'"><strong>Back</strong></button>
+</body>
+</html>

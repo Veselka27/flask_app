@@ -8,16 +8,28 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const counter = document.getElementById("count-tag")
+            function reset() {
+                fetch("/reset-buttoncount", {method:"POST"})
+                counter.textContent="You have clicked the button 0 times"
+            }
             function add() {
                 fetch("/button-counter", {method: "POST"})
                 .then(response => response.text())
                 .then(data => {
-                    counter.textContent=`You have clicked the button ${data} times`;
+                    if (data == 1) {
+                        counter.textContent=`You have clicked the button ${data} time`;
+                    }
+                    else {
+                        counter.textContent=`You have clicked the button ${data} times`;
+                    }
                 })
             }
 
             document.getElementById("add-button").addEventListener("click", () => {
                 add()
+            })
+            document.getElementById("reset-button").addEventListener("click", () => {
+                reset()
             })
         })
     </script>
@@ -26,6 +38,7 @@
     <h1>Button counter</h1>
     <h3 id="count-tag">You have clicked the button {{count}} times</h3>
     <button id="add-button"><strong>Add</strong></button>
+    <button id="reset-button"><strong>Reset</strong></button><br><br>
     <button onclick="window.location.href='/'"><strong>Back</strong></button>
 </body>
 </html>
